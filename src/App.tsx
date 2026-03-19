@@ -17,7 +17,8 @@ import {
   Mail, 
   User,
   TrendingUp,
-  ChevronDown
+  ChevronDown,
+  Instagram
 } from 'lucide-react';
 
 const COUNTRY_CODES = [
@@ -472,9 +473,9 @@ const ConversionScore = () => {
         <p className="text-slate-600 mb-4 leading-relaxed transition-colors duration-500 group-hover:text-slate-400">
           Every business we review receives a clear conversion score based on user journey, friction points, and revenue leaks.
         </p>
-        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-50 border border-slate-100 text-xs font-medium text-slate-500 transition-all duration-500 group-hover:bg-slate-800 group-hover:border-slate-700 group-hover:text-slate-400">
-          <TrendingUp className="w-3.5 h-3.5 text-indigo-500" />
-          A preview of the scoring system used in our free analysis.
+        <div className="inline-flex items-center gap-2 px-3 py-2 md:py-1 rounded-2xl md:rounded-full bg-slate-50 border border-slate-100 text-xs font-medium text-slate-500 transition-all duration-500 group-hover:bg-slate-800 group-hover:border-slate-700 group-hover:text-slate-400">
+          <TrendingUp className="w-5 h-5 md:w-3.5 md:h-3.5 text-indigo-500 shrink-0" />
+          <span className="text-center md:text-left">Get your full conversion score and analysis</span>
         </div>
       </div>
     </div>
@@ -671,7 +672,15 @@ export default function App() {
             </div>
 
             <div className="flex items-center gap-6 text-slate-400 text-sm">
-              <a href="mailto:hello@converlify.com" className="hover:text-indigo-600 transition-colors">hello@converlify.com</a>
+              <a 
+                href="https://www.instagram.com/converlify" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="flex items-center gap-2 hover:text-indigo-600 transition-colors"
+              >
+                Follow our journey
+                <Instagram className="w-6 h-6 md:w-5 md:h-5" />
+              </a>
               <span>© 2026 Converlify. All rights reserved.</span>
             </div>
           </div>
