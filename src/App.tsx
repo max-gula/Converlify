@@ -66,7 +66,14 @@ const Navbar = () => (
             onClick={() => {
               const element = document.getElementById('request-form');
               if (element) {
-                element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                const headerOffset = 100;
+                const elementPosition = element.getBoundingClientRect().top;
+                const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+                window.scrollTo({
+                  top: offsetPosition,
+                  behavior: 'smooth'
+                });
               }
             }}
             className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-full shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 transition-colors"
@@ -92,6 +99,20 @@ const LeadForm = () => {
     phone: '',
     email: ''
   });
+
+  const scrollToForm = () => {
+    const element = document.getElementById('request-form');
+    if (element) {
+      const headerOffset = 100;
+      const elementPosition = element.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      });
+    }
+  };
 
   // Center the success message on submission
   useEffect(() => {
@@ -313,7 +334,14 @@ const ValueCard = ({ icon: Icon, title, description }: { icon: any, title: strin
   const scrollToForm = () => {
     const element = document.getElementById('request-form');
     if (element) {
-      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      const headerOffset = 100;
+      const elementPosition = element.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      });
     }
   };
 
@@ -334,6 +362,20 @@ const ValueCard = ({ icon: Icon, title, description }: { icon: any, title: strin
 const ConversionScore = () => {
   const [count, setCount] = useState(0);
   
+  const scrollToForm = () => {
+    const element = document.getElementById('request-form');
+    if (element) {
+      const headerOffset = 100;
+      const elementPosition = element.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      });
+    }
+  };
+
   useEffect(() => {
     let currentAnimation: { stop: () => void } | undefined;
     let timeoutId: number;
@@ -388,12 +430,7 @@ const ConversionScore = () => {
 
   return (
     <div 
-      onClick={() => {
-        const element = document.getElementById('request-form');
-        if (element) {
-          element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }
-      }}
+      onClick={scrollToForm}
       className="flex flex-col md:flex-row items-center gap-8 md:gap-12 bg-white p-8 md:p-12 rounded-3xl border border-slate-100 shadow-xl max-w-4xl mx-auto cursor-pointer transition-all duration-500 hover:bg-slate-900 group"
     >
       <div className="relative w-32 h-32 flex items-center justify-center">
@@ -451,7 +488,7 @@ export default function App() {
 
       <main>
         {/* Hero Section */}
-        <section className="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden">
+        <section className="relative pt-32 pb-20 lg:pt-48 lg:pb-32">
           {/* Background Elements */}
           <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full -z-10 pointer-events-none">
             <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-indigo-50 rounded-full blur-3xl opacity-50"></div>
@@ -490,7 +527,6 @@ export default function App() {
 
               <motion.div
                 id="request-form"
-                className="scroll-mt-24 md:scroll-mt-0"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.2 }}
@@ -566,7 +602,14 @@ export default function App() {
               onClick={() => {
                 const element = document.getElementById('request-form');
                 if (element) {
-                  element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                  const headerOffset = 100;
+                  const elementPosition = element.getBoundingClientRect().top;
+                  const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+                  window.scrollTo({
+                    top: offsetPosition,
+                    behavior: 'smooth'
+                  });
                 }
               }}
               className="bg-indigo-900 rounded-3xl p-10 lg:p-16 text-center text-white relative overflow-hidden shadow-2xl cursor-pointer"
@@ -585,7 +628,14 @@ export default function App() {
                   onClick={() => {
                     const element = document.getElementById('request-form');
                     if (element) {
-                      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                      const headerOffset = 100;
+                      const elementPosition = element.getBoundingClientRect().top;
+                      const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+                      window.scrollTo({
+                        top: offsetPosition,
+                        behavior: 'smooth'
+                      });
                     }
                   }}
                   className="inline-flex items-center px-8 py-4 bg-white text-indigo-900 font-bold rounded-xl hover:bg-indigo-50 transition-colors shadow-lg"
