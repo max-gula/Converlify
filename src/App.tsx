@@ -62,12 +62,17 @@ const Navbar = () => (
           <a href="#what-you-get" className="text-sm font-medium text-slate-600 hover:text-indigo-600 transition-colors">
             What You'll Get
           </a>
-          <a 
-            href="#top" 
+          <button 
+            onClick={() => {
+              const element = document.getElementById('request-form');
+              if (element) {
+                element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+              }
+            }}
             className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-full shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 transition-colors"
           >
             Request Free Analysis
-          </a>
+          </button>
         </div>
       </div>
     </div>
@@ -87,6 +92,19 @@ const LeadForm = () => {
     phone: '',
     email: ''
   });
+
+  // Center the success message on submission
+  useEffect(() => {
+    if (isSubmitted) {
+      const element = document.getElementById('success-message');
+      if (element) {
+        // Small delay to ensure the element is rendered
+        setTimeout(() => {
+          element.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }, 100);
+      }
+    }
+  }, [isSubmitted]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -146,6 +164,7 @@ const LeadForm = () => {
   if (isSubmitted) {
     return (
       <motion.div 
+        id="success-message"
         initial={{ opacity: 0, scale: 0.95 }}
         animate={{ opacity: 1, scale: 1 }}
         className="bg-white p-8 rounded-2xl shadow-xl border border-slate-100 text-center"
@@ -290,18 +309,27 @@ const LeadForm = () => {
   );
 };
 
-const ValueCard = ({ icon: Icon, title, description }: { icon: any, title: string, description: string }) => (
-  <div 
-    onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-    className="p-6 bg-white rounded-2xl border border-slate-100 shadow-sm hover:shadow-xl transition-all duration-500 cursor-pointer hover:bg-slate-900 group"
-  >
-    <div className="w-12 h-12 bg-indigo-50 text-indigo-600 rounded-xl flex items-center justify-center mb-4 transition-colors duration-500 group-hover:bg-slate-800 group-hover:text-indigo-400">
-      <Icon className="w-6 h-6" />
+const ValueCard = ({ icon: Icon, title, description }: { icon: any, title: string, description: string }) => {
+  const scrollToForm = () => {
+    const element = document.getElementById('request-form');
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  };
+
+  return (
+    <div 
+      onClick={scrollToForm}
+      className="p-4 md:p-6 bg-white rounded-2xl border border-slate-100 shadow-sm hover:shadow-xl transition-all duration-500 cursor-pointer hover:bg-slate-900 group"
+    >
+      <div className="w-10 h-10 md:w-12 md:h-12 bg-indigo-50 text-indigo-600 rounded-xl flex items-center justify-center mb-3 md:mb-4 transition-colors duration-500 group-hover:bg-slate-800 group-hover:text-indigo-400">
+        <Icon className="w-5 h-5 md:w-6 md:h-6" />
+      </div>
+      <h4 className="text-sm md:text-lg font-bold text-slate-900 mb-1 md:mb-2 font-display transition-colors duration-500 group-hover:text-white leading-tight">{title}</h4>
+      <p className="text-slate-600 text-[10px] md:text-sm leading-relaxed transition-colors duration-500 group-hover:text-slate-400">{description}</p>
     </div>
-    <h4 className="text-lg font-bold text-slate-900 mb-2 font-display transition-colors duration-500 group-hover:text-white">{title}</h4>
-    <p className="text-slate-600 text-sm leading-relaxed transition-colors duration-500 group-hover:text-slate-400">{description}</p>
-  </div>
-);
+  );
+};
 
 const ConversionScore = () => {
   const [count, setCount] = useState(0);
@@ -360,7 +388,12 @@ const ConversionScore = () => {
 
   return (
     <div 
-      onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+      onClick={() => {
+        const element = document.getElementById('request-form');
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }}
       className="flex flex-col md:flex-row items-center gap-8 md:gap-12 bg-white p-8 md:p-12 rounded-3xl border border-slate-100 shadow-xl max-w-4xl mx-auto cursor-pointer transition-all duration-500 hover:bg-slate-900 group"
     >
       <div className="relative w-32 h-32 flex items-center justify-center">
@@ -457,6 +490,7 @@ export default function App() {
 
               <motion.div
                 id="request-form"
+                className="scroll-mt-24 md:scroll-mt-0"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.2 }}
@@ -492,7 +526,7 @@ export default function App() {
               </p>
             </div>
             
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
+            <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4 md:gap-6">
               <ValueCard 
                 icon={TrendingUp}
                 title="Conversion Score Rating"
@@ -529,7 +563,12 @@ export default function App() {
               initial={{ opacity: 0, scale: 0.98 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
-              onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+              onClick={() => {
+                const element = document.getElementById('request-form');
+                if (element) {
+                  element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+              }}
               className="bg-indigo-900 rounded-3xl p-10 lg:p-16 text-center text-white relative overflow-hidden shadow-2xl cursor-pointer"
             >
               {/* Decorative circles */}
@@ -542,13 +581,18 @@ export default function App() {
                   We are currently reviewing a limited number of businesses ahead of launch. 
                   Businesses selected now may also be considered for early access to our full suite of conversion tools.
                 </p>
-                <a 
-                  href="#top"
+                <button 
+                  onClick={() => {
+                    const element = document.getElementById('request-form');
+                    if (element) {
+                      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }
+                  }}
                   className="inline-flex items-center px-8 py-4 bg-white text-indigo-900 font-bold rounded-xl hover:bg-indigo-50 transition-colors shadow-lg"
                 >
                   Secure Your Spot
                   <ArrowRight className="ml-2 w-5 h-5" />
-                </a>
+                </button>
               </div>
             </motion.div>
           </div>
